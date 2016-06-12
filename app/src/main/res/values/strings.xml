@@ -16,6 +16,7 @@
     <string name="tip_amount">Tip Amount:</string>
     <string name="total_amount_after_tax">Total Amount After Tax:</string>
     <string name="enter_check_total">Enter Check Total</string>
+    <string name="how_was_service">How was your service today?</string>
 
     <!--Error Messages-->
     <string name="no_value_error">Please enter a value into the check total field</string>

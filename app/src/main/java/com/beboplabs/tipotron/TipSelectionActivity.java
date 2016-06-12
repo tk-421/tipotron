@@ -21,7 +21,7 @@ public class TipSelectionActivity extends Activity {
     Button tip0, tip10, tip15, tip18, tip20, tip25;
     ImageView fuckThisNoise;
     String billValue;
-    TextView finalTotalWithTip, tipAmount, tipAmountText, totalAmountAfterTip;
+    TextView howWasService, finalTotalWithTip, tipAmount, tipAmountText, totalAmountAfterTip;
     Animation expandIn;
 
     @Override
@@ -36,6 +36,7 @@ public class TipSelectionActivity extends Activity {
         tip20 = (Button) findViewById(R.id.twenty_tip);
         tip25 = (Button) findViewById(R.id.twenty_five_tip);
 
+        howWasService = (TextView) findViewById(R.id.how_was_service);
         finalTotalWithTip = (TextView) findViewById(R.id.total_amount_with_tip);
         tipAmount = (TextView) findViewById(R.id.tip_amount);
         tipAmountText = (TextView) findViewById(R.id.tip_amount_text);
@@ -116,10 +117,6 @@ public class TipSelectionActivity extends Activity {
         String myTip = NumberFormat.getCurrencyInstance().format(parseDouble(billValue) * parseDouble(whichButtonWasPressed));
         tipAmount.setText(myTip);
         finalTotalWithTip.setText(myString);
-        makeButtonsInvisible();
-    }
-
-    public void makeButtonsInvisible() {
         makeTextFieldsVisible();
     }
 
