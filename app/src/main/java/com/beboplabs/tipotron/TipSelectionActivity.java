@@ -109,27 +109,17 @@ public class TipSelectionActivity extends Activity {
     }
 
     public void doTipMath(String whichButtonWasPressed) {
-        if (billValue.length() > 0) {
-            String value = billValue;
-            Double aDouble = parseDouble(value);
-            double finalBillValue = aDouble * (1 + parseDouble(whichButtonWasPressed));
-            String myString = NumberFormat.getCurrencyInstance().format(finalBillValue);
-            String myTip = NumberFormat.getCurrencyInstance().format(parseDouble(billValue) * parseDouble(whichButtonWasPressed));
-            tipAmount.setText(myTip);
-            finalTotalWithTip.setText(myString);
-            makeButtonsInvisible();
-        } else {
-            Toast.makeText(this, R.string.no_value_error, Toast.LENGTH_SHORT).show();
-        }
+        String value = billValue;
+        Double aDouble = parseDouble(value);
+        double finalBillValue = aDouble * (1 + parseDouble(whichButtonWasPressed));
+        String myString = NumberFormat.getCurrencyInstance().format(finalBillValue);
+        String myTip = NumberFormat.getCurrencyInstance().format(parseDouble(billValue) * parseDouble(whichButtonWasPressed));
+        tipAmount.setText(myTip);
+        finalTotalWithTip.setText(myString);
+        makeButtonsInvisible();
     }
 
     public void makeButtonsInvisible() {
-        tip0.setVisibility(View.INVISIBLE);
-        tip10.setVisibility(View.INVISIBLE);
-        tip15.setVisibility(View.INVISIBLE);
-        tip18.setVisibility(View.INVISIBLE);
-        tip20.setVisibility(View.INVISIBLE);
-        tip25.setVisibility(View.INVISIBLE);
         makeTextFieldsVisible();
     }
 

@@ -17,8 +17,11 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:labelFor="@id/check_initial_amount"
-        android:textColorHint="@color/dark_tangerine"
+        android:textColorHint="@color/white"
+        android:textStyle="bold"
+        android:textAlignment="center"
         android:hint="@string/enter_check_total"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
 
