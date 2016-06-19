@@ -1,16 +1,18 @@
 package com.beboplabs.tipotron;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -19,10 +21,10 @@ import static java.lang.Double.parseDouble;
 public class TipSelectionActivity extends Activity {
 
     Button tip0, tip10, tip15, tip18, tip20, tip25;
-    ImageView fuckThisNoise;
     String billValue;
     TextView howWasService, finalTotalWithTip, tipAmount, tipAmountText, totalAmountAfterTip;
     Animation expandIn;
+    AlertDialog zeroTipConfirmDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +47,6 @@ public class TipSelectionActivity extends Activity {
         Intent intent = getIntent();
         billValue = intent.getStringExtra(MainActivity.BILL_VALUE);
 
-//        fuckThisNoise = (ImageView) findViewById(R.id.background_image);
-//        fuckThisNoise.setImageDrawable(getResources().getDrawable(R.drawable.cinemagraph_for_main_activity_view));
-//        AnimationDrawable frameAnimation = (AnimationDrawable) fuckThisNoise.getDrawable();
-//        frameAnimation.start();
-
         expandIn = AnimationUtils.loadAnimation(this, R.anim.expand_in);
 
         tip0.startAnimation(expandIn);
@@ -62,7 +59,7 @@ public class TipSelectionActivity extends Activity {
         tip0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doTipMath("0");
+                handleZeroTipDialog(TipSelectionActivity.this);
             }
         });
 
@@ -106,8 +103,32 @@ public class TipSelectionActivity extends Activity {
         totalAmountAfterTip.setVisibility(View.INVISIBLE);
         finalTotalWithTip.setVisibility(View.INVISIBLE);
 
-
+        // Until I can figure out why the SystemUI bar is colored white all the time, just hide it.
+        Window window = TipSelectionActivity.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(TipSelectionActivity.this.getResources().getColor(R.color.colorPrimaryDark));
     }
+
+    public void handleZeroTipDialog(Context context) {
+        AlertDialog.Builder zeroTipDialog = new AlertDialog.Builder(context);
+        zeroTipConfirmDialog = zeroTipDialog.setTitle(R.string.zero_tip_title)
+                .setMessage(R.string.zero_tip_text)
+                .setPositiveButton(R.string.alert_dialog_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        doTipMath("0");
+                    }
+                })
+                .setNegativeButton(R.string.alert_dialog_cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .show();
+    }
+
 
     public void doTipMath(String whichButtonWasPressed) {
         String value = billValue;

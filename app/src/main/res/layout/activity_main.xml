@@ -16,6 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:maxLength="12"
         android:labelFor="@id/check_initial_amount"
         android:textColorHint="@color/white"
         android:textStyle="bold"

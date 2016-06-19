@@ -8,7 +8,7 @@
     android:toYScale="1.1"
     android:pivotX="50%"
     android:pivotY="50%"
-    android:duration="600"/> <!--length of first animation-->
+    android:duration="500"/> <!--length of first animation-->
 
 
     <scale
@@ -19,6 +19,6 @@
     android:pivotX="50%"
     android:pivotY="50%"
     android:startOffset="400"
-    android:duration="600"/>
+    android:duration="500"/>
 
 </set>

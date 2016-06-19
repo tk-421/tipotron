@@ -3,12 +3,12 @@
     <string name="action_settings">Settings</string>
 
     <!--Button Names-->
-    <string name="terrible_serivce">Terrible Service</string>
-    <string name="bad_service">Bad Service</string>
-    <string name="okay_service">OK Service</string>
-    <string name="good_service">Good Service</string>
-    <string name="great_service">Great Service</string>
-    <string name="best_service">Exceptional Service</string>
+    <string name="terrible_serivce">Terrible (0%)</string>
+    <string name="bad_service">Bad (10%)</string>
+    <string name="okay_service">OK (15%)</string>
+    <string name="good_service">Good (18%)</string>
+    <string name="great_service">Great (20%)</string>
+    <string name="best_service">Exceptional (25%)</string>
     <string name="figure_out_tip">Figure Out My Tip</string>
 
     <!--Text Fields-->
@@ -17,6 +17,12 @@
     <string name="total_amount_after_tax">Total Amount After Tax:</string>
     <string name="enter_check_total">Enter Check Total</string>
     <string name="how_was_service">How was your service today?</string>
+
+    <!--Alert Dialog Text-->
+    <string name="zero_tip_title">Confirm Tip?</string>
+    <string name="zero_tip_text">Please remember that in many states the minimum wage for servers is $2.13. Servers depend on tips to provide the vast majority of their income. If you are sure the service was poor enough to warrant a 0% tip, tap OK to continue</string>
+    <string name="alert_dialog_ok">OK</string>
+    <string name="alert_dialog_cancel">Cancel</string>
 
     <!--Error Messages-->
     <string name="no_value_error">Please enter a value into the check total field</string>
